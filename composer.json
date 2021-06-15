@@ -1,0 +1,23 @@
+{
+    "name": "webrise1/pdf-generator",
+    "description": "pdf-generator",
+    "type": "yii2-extension",
+    "authors": [
+        {
+            "name": "Andrey Malyshev",
+            "email": "andruxamal@yandex.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "extra": {
+        "bootstrap": "webrise1\\pdfgenerator\\Bootstrap"
+    },
+    "autoload": {
+        "psr-4": {
+            "webrise1\\pdfgenerator\\": "src"
+        }
+    }
+}
