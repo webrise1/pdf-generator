@@ -9,11 +9,11 @@ class TemplateCertificate extends \yii\db\ActiveRecord{
 const STATUS_ACTIVE=1;
 const STATUS_INACTIVE=2;
 const STATUS_ARCHIVE=3;
-
+const TABLE_NAME='ext_pdf_generator_template_certificate';
 
     public static function tableName()
     {
-        return '{{%pdf_generator_template_certificate}}';
+        return self::TABLE_NAME;
     }
 
     public static function getStatusesLabels(){

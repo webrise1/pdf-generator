@@ -5,14 +5,50 @@ use webrise1\pdfgenerator\models\search\TemplateCertificateSearch;
 use webrise1\pdfgenerator\models\TemplateCertificate;
 use webrise1\pdfgenerator\models\User;
 use yii\base\Exception;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use Yii;
 use kartik\mpdf\Pdf;
 use yii\db\Query;
 use yii\widgets\ActiveForm;
 use yii\web\Response;
-class TemplateCertificateController extends BaseController {
+class TemplateCertificateController extends Controller {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update','create'],
+                        'roles' => ['_ext_SUPERADMIN'],
+                    ],
+                    [
+                        'allow' => false,
+                        'actions' => ['update','create'],
+                    ],
+                    [
+                        'roles' => ['_ext_ADMIN'],
+                        'allow' => true,
+                    ],
 
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
     public function actionTest(){
        return $this->renderPartial('_reportView');
     }

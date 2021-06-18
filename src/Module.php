@@ -5,6 +5,7 @@ use webrise1\pdfgenerator\models\TemplateCertificate;
 use yii\base\Module as BaseModule;
 class Module extends BaseModule
 {
+    const EXT_NAME='ext-pdf-generator';
     public $controllerNamespace = 'webrise1\pdfgenerator\controllers';
 
     public $userTable;
@@ -36,4 +37,9 @@ class Module extends BaseModule
             'attributes'=>['css_files','content']
         ]
     ];
+    public static function getMenuItems($label){
+        return [
+            'label' => $label, 'icon' => 'certificate','url' => ['/'.self::EXT_NAME.'/admin/template-certificate']
+        ];
+    }
 }

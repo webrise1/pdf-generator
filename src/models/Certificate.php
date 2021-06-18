@@ -1,6 +1,7 @@
 <?php
 namespace webrise1\pdfgenerator\models;
 class Certificate extends \yii\db\ActiveRecord{
+    const TABLE_NAME='ext_pdf_generator_certificate';
     public function rules()
     {
         return [
@@ -19,7 +20,7 @@ class Certificate extends \yii\db\ActiveRecord{
 
     public static function tableName()
     {
-        return '{{%pdf_generator_certificate}}';
+        return self::TABLE_NAME;
     }
     public function getTemplateCertificate(){
         return $this->hasOne(TemplateCertificate::className(),['id'=>'template_certificate_id']);
